@@ -3,6 +3,7 @@ import argparse
 from collections import namedtuple
 import datetime as dt
 import logging
+import os
 
 import requests
 
@@ -104,15 +105,18 @@ def format_message(stock, symbol):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('stock_token',
-                        help='alphavantage api token: https://www.alphavantage.co/support/#api-key')
-    parser.add_argument('stock_symbol',
-                        help='like GSH or MSFT')
-    parser.add_argument('tg_token',
-                        help='telegram bot token: https://core.telegram.org/bots#6-botfather')
+    parser.add_argument('stock_symbol', help='like GSH or MSFT')
     parser.add_argument('tg_chat_id', type=int,
                         help='telegram chat id: https://core.telegram.org/bots/api#sendmessage')
     return parser.parse_args()
+
+
+def get_env_var(var_name, help_text):
+    env_var = os.environ.get(var_name)
+    if not env_var:
+        error = '"{}" environment variable is required: {}'.format(var_name, help_text)
+        raise EnvironmentError(error)
+    return env_var
 
 
 def main(stock_token, stock_symbol, tg_token, tg_chat_id):
@@ -130,4 +134,6 @@ def main(stock_token, stock_symbol, tg_token, tg_chat_id):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     args = parse_args()
-    main(args.stock_token, args.stock_symbol, args.tg_token, args.tg_chat_id)
+    stock_token = get_env_var('STOCK_TOKEN', 'https://www.alphavantage.co/support/#api-key')
+    tg_token = get_env_var('TG_TOKEN', 'https://core.telegram.org/bots#6-botfather')
+    main(stock_token, args.stock_symbol, tg_token, args.tg_chat_id)
