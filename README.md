@@ -1,5 +1,5 @@
 # stockbot
-Sends last stock info to selected telegram chat every day at 12.
+Sends last stock info to selected telegram chat daily (tuesday-saturday are days with updates) at 12.
 
 # Usage
 Run:
