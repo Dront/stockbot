@@ -114,7 +114,7 @@ def parse_args():
 def get_env_var(var_name, help_text):
     env_var = os.environ.get(var_name)
     if not env_var:
-        error = '"{}" environment variable is required: {}'.format(var_name, help_text)
+        error = f'"{var_name}" environment variable is required: {help_text}'
         raise EnvironmentError(error)
     return env_var
 

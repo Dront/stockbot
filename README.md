@@ -18,7 +18,7 @@ where:
 `<chat_id>` - telegram chat id
 
 Single run (requires python 3.6+):
-```python
+```bash
 pip3 install -r requirements.txt
 export STOCK_TOKEN=<stock_token>
 export TG_TOKEN=<tg_token>
