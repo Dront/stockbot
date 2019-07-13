@@ -89,7 +89,7 @@ MSG_TEMPLATE = """
 
 def format_message(stock, symbol):
     dollar_diff = stock.close - stock.open
-    percent_diff = (dollar_diff / stock.open - 1)
+    percent_diff = (dollar_diff / stock.open) * 100
     template_context = {
         'symbol': symbol,
         'current_date': stock.date.strftime(DATE_FORMAT),
