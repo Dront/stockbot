@@ -24,6 +24,11 @@ export STOCK_TOKEN=<stock_token>
 export TG_TOKEN=<tg_token>
 python3 send_stock_update.py <symbol> <chat_id>
 ```
+or
+```bash
+docker build -t stockbot .
+docker run -e STOCK_TOKEN=<stock_token> -e TG_TOKEN=<tg_token> -t stockbot ./send_stock_update.py <symbol> <chat_id>
+```
 
 To get chat id add bot to chat and run in python interpreter:
 ```python
