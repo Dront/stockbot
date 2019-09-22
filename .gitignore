@@ -125,3 +125,7 @@ dmypy.json
 
 # IDE
 .vscode
+
+
+# real config file
+config.json

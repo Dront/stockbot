@@ -1,0 +1,13 @@
+{
+    "tg_chat_id": 123,
+    "stocks": [
+        {
+            "symbol": "AAPL",
+            "period": 7
+        },
+        {
+            "symbol": "AMZN",
+            "period": 1
+        }
+    ]
+}
